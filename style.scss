@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.keyboard {
+  border-radius: 6px;
+  padding: 6px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__row {
+    display: flex;
+    gap: 6px
+  }
+}
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background: dimgray;
+    color: white;
+  }
+
+  &:active {
+    background: cadetblue;
+  }
+}
+
+.grave {
+  width: 30px;
+}
+.backspace {
+  width: 80px;
+}
+.backslash,
+.tab {
+  width: 55px;
+}
+
+.caps-lock {
+  width: 70px;
+}
+.enter {
+  width: 85px;
+}
+.left-shift {
+  width: 88px;
+}
+.right-shift {
+  width: 112px;
+}
+.spase {
+  width: 250px;
+}
+.up-down {
+  &__key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 42px;
+    height: 20px;
+    cursor: pointer;
+    &:hover {
+      background: dimgray;
+      color: white;
+    }
+
+    &:active {
+      background: cadetblue;
+    }
+  }
+
+  .up {
+    border-radius: 4px 4px 0 0;
+  }
+  .down {
+    border-radius: 0 0 4px 4px;
+  }
+}
