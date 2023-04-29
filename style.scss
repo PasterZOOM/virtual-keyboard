@@ -8,6 +8,7 @@
 }
 
 .keyboard {
+  user-select: none;
   border-radius: 6px;
   padding: 6px;
   background: lightgray;
@@ -103,4 +104,9 @@
   .down {
     border-radius: 0 0 4px 4px;
   }
+}
+
+.active {
+  background: cadetblue;
+  color: white;
 }

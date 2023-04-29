@@ -14,9 +14,9 @@ const keyboard = {
       Digit0: ')',
       Minus: '_',
       Equal: '+',
-      Backspace: 'Backspace',
+      Backspace: 'backspace',
 
-      Tab: 'Tab',
+      Tab: 'tab',
       KeyQ: 'Q',
       KeyW: 'W',
       KeyE: 'E',
@@ -31,7 +31,7 @@ const keyboard = {
       BracketRight: '}',
       Backslash: '|',
 
-      CapsLock: 'CapsLock',
+      CapsLock: 'caps lock',
       KeyA: 'A',
       KeyS: 'S',
       KeyD: 'D',
@@ -43,9 +43,9 @@ const keyboard = {
       KeyL: 'L',
       Semicolon: ':',
       Quote: '"',
-      Enter: 'Enter',
+      Enter: 'enter',
 
-      ShiftLeft: 'ShiftLeft',
+      ShiftLeft: 'shift',
       KeyZ: 'Z',
       KeyX: 'X',
       KeyC: 'C',
@@ -56,19 +56,19 @@ const keyboard = {
       Comma: '<',
       Period: '>',
       Slash: '?',
-      ShiftRight: 'ShiftRight',
+      ShiftRight: 'shift',
 
-      ControlLeft: 'ControlLeft',
-      Fn: 'Fn',
-      Window: 'Window',
-      AltLeft: 'AltLeft',
-      Space: 'Space',
-      AltRight: 'AltRight',
-      ControlRight: 'ControlRight',
-      ArrowLeft: 'ArrowLeft',
-      c: 'ArrowUp',
-      ArrowDown: 'ArrowDown',
-      ArrowRight: 'ArrowRight',
+      ControlLeft: 'ctrl',
+      Fn: 'fn',
+      Window: 'win',
+      AltLeft: 'alt',
+      Space: 'space',
+      AltRight: 'alt',
+      ControlRight: 'ctrl',
+      ArrowLeft: 'left',
+      c: 'up',
+      ArrowDown: 'down',
+      ArrowRight: 'right',
     },
     lower: {
       Backquote: '`',
@@ -84,9 +84,9 @@ const keyboard = {
       Digit0: '0',
       Minus: '-',
       Equal: '=',
-      Backspace: 'Backspace',
+      Backspace: 'backspace',
 
-      Tab: 'Tab',
+      Tab: 'tab',
       KeyQ: 'q',
       KeyW: 'w',
       KeyE: 'e',
@@ -101,7 +101,7 @@ const keyboard = {
       BracketRight: ']',
       Backslash: '\\',
 
-      CapsLock: 'CapsLock',
+      CapsLock: 'caps lock',
       KeyA: 'a',
       KeyS: 's',
       KeyD: 'd',
@@ -113,9 +113,9 @@ const keyboard = {
       KeyL: 'l',
       Semicolon: ';',
       Quote: '\'',
-      Enter: 'Enter',
+      Enter: 'enter',
 
-      ShiftLeft: 'ShiftLeft',
+      ShiftLeft: 'shift',
       KeyZ: 'z',
       KeyX: 'x',
       KeyC: 'c',
@@ -126,19 +126,19 @@ const keyboard = {
       Comma: ',',
       Period: '.',
       Slash: '/',
-      ShiftRight: 'ShiftRight',
+      ShiftRight: 'shift',
 
-      ControlLeft: 'ControlLeft',
-      Fn: 'Fn',
-      Window: 'Window',
-      AltLeft: 'AltLeft',
-      Space: 'Space',
-      AltRight: 'AltRight',
-      ControlRight: 'ControlRight',
-      ArrowLeft: 'ArrowLeft',
-      ArrowUp: 'ArrowUp',
-      ArrowDown: 'ArrowDown',
-      ArrowRight: 'ArrowRight',
+      ControlLeft: 'ctrl',
+      Fn: 'fn',
+      Window: 'win',
+      AltLeft: 'alt',
+      Space: 'space',
+      AltRight: 'alt',
+      ControlRight: 'ctrl',
+      ArrowLeft: 'left',
+      c: 'up',
+      ArrowDown: 'down',
+      ArrowRight: 'right',
     },
   },
   ru: {
@@ -156,9 +156,9 @@ const keyboard = {
       Digit0: ')',
       Minus: '_',
       Equal: '+',
-      Backspace: 'Backspace',
+      Backspace: 'backspace',
 
-      Tab: 'Tab',
+      Tab: 'tab',
       KeyQ: 'Й',
       KeyW: 'Ц',
       KeyE: 'У',
@@ -173,7 +173,7 @@ const keyboard = {
       BracketRight: 'Ъ',
       Backslash: '/',
 
-      CapsLock: 'CapsLock',
+      CapsLock: 'caps lock',
       KeyA: 'Ф',
       KeyS: 'Ы',
       KeyD: 'В',
@@ -185,9 +185,9 @@ const keyboard = {
       KeyL: 'Д',
       Semicolon: 'Ж',
       Quote: 'Э',
-      Enter: 'Enter',
+      Enter: 'enter',
 
-      ShiftLeft: 'ShiftLeft',
+      ShiftLeft: 'shift',
       KeyZ: 'Я',
       KeyX: 'Ч',
       KeyC: 'С',
@@ -198,19 +198,19 @@ const keyboard = {
       Comma: 'Б',
       Period: 'Ю',
       Slash: ',',
-      ShiftRight: 'ShiftRight',
+      ShiftRight: 'shift',
 
-      ControlLeft: 'ControlLeft',
-      Fn: 'Fn',
-      Window: 'Window',
-      AltLeft: 'AltLeft',
-      Space: 'Space',
-      AltRight: 'AltRight',
-      ControlRight: 'ControlRight',
-      ArrowLeft: 'ArrowLeft',
-      ArrowUp: 'ArrowUp',
-      ArrowDown: 'ArrowDown',
-      ArrowRight: 'ArrowRight',
+      ControlLeft: 'ctrl',
+      Fn: 'fn',
+      Window: 'win',
+      AltLeft: 'alt',
+      Space: 'space',
+      AltRight: 'alt',
+      ControlRight: 'ctrl',
+      ArrowLeft: 'left',
+      c: 'up',
+      ArrowDown: 'down',
+      ArrowRight: 'right',
     },
     lower: {
       Backquote: 'ё',
@@ -226,9 +226,9 @@ const keyboard = {
       Digit0: '0',
       Minus: '-',
       Equal: '=',
-      Backspace: 'Backspace',
+      Backspace: 'backspace',
 
-      Tab: 'Tab',
+      Tab: 'tab',
       KeyQ: 'й',
       KeyW: 'ц',
       KeyE: 'у',
@@ -243,7 +243,7 @@ const keyboard = {
       BracketRight: 'ъ',
       Backslash: '\\',
 
-      CapsLock: 'CapsLock',
+      CapsLock: 'caps lock',
       KeyA: 'ф',
       KeyS: 'ы',
       KeyD: 'в',
@@ -255,9 +255,9 @@ const keyboard = {
       KeyL: 'д',
       Semicolon: 'ж',
       Quote: 'э',
-      Enter: 'Enter',
+      Enter: 'enter',
 
-      ShiftLeft: 'ShiftLeft',
+      ShiftLeft: 'shift',
       KeyZ: 'я',
       KeyX: 'ч',
       KeyC: 'с',
@@ -268,19 +268,94 @@ const keyboard = {
       Comma: 'б',
       Period: 'ю',
       Slash: '.',
-      ShiftRight: 'ShiftRight',
+      ShiftRight: 'shift',
 
-      ControlLeft: 'ControlLeft',
-      Fn: 'Fn',
-      Window: 'Window',
-      AltLeft: 'AltLeft',
-      Space: 'Space',
-      AltRight: 'AltRight',
-      ControlRight: 'ControlRight',
-      ArrowLeft: 'ArrowLeft',
-      ArrowUp: 'ArrowUp',
-      ArrowDown: 'ArrowDown',
-      ArrowRight: 'ArrowRight',
+      ControlLeft: 'ctrl',
+      Fn: 'fn',
+      Window: 'win',
+      AltLeft: 'alt',
+      Space: 'space',
+      AltRight: 'alt',
+      ControlRight: 'ctrl',
+      ArrowLeft: 'left',
+      ArrowUp: 'up',
+      ArrowDown: 'down',
+      ArrowRight: 'right',
     },
   },
 };
+let language = 'ru';
+let register = 'lower';
+let isCapsLock = false;
+
+const keys = document.querySelectorAll('.key');
+
+const redraw = () => {
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i];
+    key.innerHTML = keyboard[language][register][key.id];
+  }
+};
+redraw();
+
+const switchRegister = (e) => {
+  if (e.code === 'ShiftRight' || e.code === 'ShiftLeft') {
+    register = register === 'upper' ? 'lower' : 'upper';
+    redraw();
+  }
+};
+
+const switchLanguage = (e) => {
+  if ((e.code === 'ShiftLeft' && e.altKey)
+    || (e.code === 'ShiftRight' && e.altKey)) {
+    language = language === 'ru' ? 'en' : 'ru';
+  }
+};
+
+const toggleCapsLock = (e) => {
+  if (e.code === 'CapsLock') {
+    const capsLockKey = document.getElementById(e.code);
+
+    register = isCapsLock ? 'lower' : 'upper';
+
+    if (!isCapsLock) {
+      capsLockKey.classList.add('active');
+      isCapsLock = true;
+    } else {
+      capsLockKey.classList.remove('active');
+      isCapsLock = false;
+    }
+
+    redraw();
+  }
+};
+
+document.addEventListener('keydown', (e) => {
+  const activeKey = document.getElementById(e.code);
+
+  if (e.code === 'Tab') {
+    e.preventDefault();
+  }
+  switchRegister(e);
+  toggleCapsLock(e);
+  switchLanguage(e);
+
+  if (e.code === 'CapsLock') {
+    return;
+  }
+  if (activeKey) {
+    activeKey.classList.add('active');
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  const activeKey = document.getElementById(e.code);
+  switchRegister(e);
+
+  if (e.code === 'CapsLock') {
+    return;
+  }
+  if (activeKey) {
+    activeKey.classList.remove('active');
+  }
+});
