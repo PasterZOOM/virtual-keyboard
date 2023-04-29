@@ -43,6 +43,7 @@ const keyboard = {
       KeyL: 'L',
       Semicolon: ':',
       Quote: '"',
+      Enter: 'Enter',
 
       ShiftLeft: 'ShiftLeft',
       KeyZ: 'Z',
@@ -55,6 +56,7 @@ const keyboard = {
       Comma: '<',
       Period: '>',
       Slash: '?',
+      ShiftRight: 'ShiftRight',
 
       ControlLeft: 'ControlLeft',
       Fn: 'Fn',
@@ -64,7 +66,7 @@ const keyboard = {
       AltRight: 'AltRight',
       ControlRight: 'ControlRight',
       ArrowLeft: 'ArrowLeft',
-      ArrowUp: 'ArrowUp',
+      c: 'ArrowUp',
       ArrowDown: 'ArrowDown',
       ArrowRight: 'ArrowRight',
     },
@@ -111,6 +113,7 @@ const keyboard = {
       KeyL: 'l',
       Semicolon: ';',
       Quote: '\'',
+      Enter: 'Enter',
 
       ShiftLeft: 'ShiftLeft',
       KeyZ: 'z',
@@ -123,6 +126,7 @@ const keyboard = {
       Comma: ',',
       Period: '.',
       Slash: '/',
+      ShiftRight: 'ShiftRight',
 
       ControlLeft: 'ControlLeft',
       Fn: 'Fn',
@@ -181,6 +185,7 @@ const keyboard = {
       KeyL: 'Д',
       Semicolon: 'Ж',
       Quote: 'Э',
+      Enter: 'Enter',
 
       ShiftLeft: 'ShiftLeft',
       KeyZ: 'Я',
@@ -193,6 +198,7 @@ const keyboard = {
       Comma: 'Б',
       Period: 'Ю',
       Slash: ',',
+      ShiftRight: 'ShiftRight',
 
       ControlLeft: 'ControlLeft',
       Fn: 'Fn',
@@ -249,6 +255,7 @@ const keyboard = {
       KeyL: 'д',
       Semicolon: 'ж',
       Quote: 'э',
+      Enter: 'Enter',
 
       ShiftLeft: 'ShiftLeft',
       KeyZ: 'я',
@@ -261,6 +268,7 @@ const keyboard = {
       Comma: 'б',
       Period: 'ю',
       Slash: '.',
+      ShiftRight: 'ShiftRight',
 
       ControlLeft: 'ControlLeft',
       Fn: 'Fn',
