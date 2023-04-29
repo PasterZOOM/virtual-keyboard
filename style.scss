@@ -20,6 +20,7 @@
     gap: 6px
   }
 }
+
 .key {
   display: flex;
   justify-content: center;
@@ -37,15 +38,18 @@
 
   &:active {
     background: cadetblue;
+    color: white;
   }
 }
 
 .grave {
   width: 30px;
 }
+
 .backspace {
   width: 80px;
 }
+
 .backslash,
 .tab {
   width: 55px;
@@ -54,18 +58,23 @@
 .caps-lock {
   width: 70px;
 }
+
 .enter {
   width: 85px;
 }
+
 .left-shift {
-  width: 88px;
+  width: 86px;
 }
+
 .right-shift {
-  width: 112px;
+  width: 114px;
 }
+
 .spase {
   width: 250px;
 }
+
 .up-down {
   &__key {
     display: flex;
@@ -75,6 +84,7 @@
     width: 42px;
     height: 20px;
     cursor: pointer;
+
     &:hover {
       background: dimgray;
       color: white;
@@ -82,12 +92,14 @@
 
     &:active {
       background: cadetblue;
+      color: white;
     }
   }
 
   .up {
     border-radius: 4px 4px 0 0;
   }
+
   .down {
     border-radius: 0 0 4px 4px;
   }

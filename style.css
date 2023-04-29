@@ -36,6 +36,7 @@
 }
 .key:active {
   background: cadetblue;
+  color: white;
 }
 
 .grave {
@@ -60,11 +61,11 @@
 }
 
 .left-shift {
-  width: 88px;
+  width: 86px;
 }
 
 .right-shift {
-  width: 112px;
+  width: 114px;
 }
 
 .spase {
@@ -86,6 +87,7 @@
 }
 .up-down__key:active {
   background: cadetblue;
+  color: white;
 }
 .up-down .up {
   border-radius: 4px 4px 0 0;
