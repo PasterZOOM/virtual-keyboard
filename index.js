@@ -293,7 +293,19 @@ const keys = document.querySelectorAll('.key');
 const redraw = () => {
   for (let i = 0; i < keys.length; i += 1) {
     const key = keys[i];
-    key.innerHTML = keyboard[language][register][key.id];
+
+    const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
+
+    let keyRegister = register;
+    const keyId = key.id.toString();
+
+    if (isCapsLock && (keyId.includes('Key') || (language === 'ru' && (ruKeys.some((k) => k === keyId))))) {
+      keyRegister = register === 'upper' ? 'upper' : 'lower';
+    } else if (isCapsLock) {
+      keyRegister = register === 'upper' ? 'lower' : 'upper';
+    }
+
+    key.innerHTML = keyboard[language][keyRegister][key.id];
   }
 };
 redraw();
