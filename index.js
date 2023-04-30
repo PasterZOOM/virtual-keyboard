@@ -60,13 +60,13 @@ const keyboard = {
 
       ControlLeft: 'ctrl',
       Fn: 'fn',
-      Window: 'win',
+      Window: 'meta',
       AltLeft: 'alt',
       Space: 'space',
       AltRight: 'alt',
       ControlRight: 'ctrl',
       ArrowLeft: 'left',
-      c: 'up',
+      ArrowUp: 'up',
       ArrowDown: 'down',
       ArrowRight: 'right',
     },
@@ -130,13 +130,13 @@ const keyboard = {
 
       ControlLeft: 'ctrl',
       Fn: 'fn',
-      Window: 'win',
+      Window: 'meta',
       AltLeft: 'alt',
       Space: 'space',
       AltRight: 'alt',
       ControlRight: 'ctrl',
       ArrowLeft: 'left',
-      c: 'up',
+      ArrowUp: 'up',
       ArrowDown: 'down',
       ArrowRight: 'right',
     },
@@ -202,13 +202,13 @@ const keyboard = {
 
       ControlLeft: 'ctrl',
       Fn: 'fn',
-      Window: 'win',
+      Window: 'meta',
       AltLeft: 'alt',
       Space: 'space',
       AltRight: 'alt',
       ControlRight: 'ctrl',
       ArrowLeft: 'left',
-      c: 'up',
+      ArrowUp: 'up',
       ArrowDown: 'down',
       ArrowRight: 'right',
     },
@@ -272,7 +272,7 @@ const keyboard = {
 
       ControlLeft: 'ctrl',
       Fn: 'fn',
-      Window: 'win',
+      Window: 'meta',
       AltLeft: 'alt',
       Space: 'space',
       AltRight: 'alt',
@@ -284,17 +284,20 @@ const keyboard = {
     },
   },
 };
+
+const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
+const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
+
 let language = 'ru';
 let register = 'lower';
 let isCapsLock = false;
 
 const keys = document.querySelectorAll('.key');
+const textarea = document.querySelector('.textarea');
 
 const redraw = () => {
   for (let i = 0; i < keys.length; i += 1) {
     const key = keys[i];
-
-    const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
 
     let keyRegister = register;
     const keyId = key.id.toString();
@@ -342,12 +345,60 @@ const toggleCapsLock = (e) => {
   }
 };
 
+const addSimbl = (simbl = ' ') => {
+  const cursorPosition = textarea.selectionStart;
+  textarea.value = `${textarea.value.slice(0, cursorPosition)}${simbl}${textarea.value.slice(cursorPosition)}`;
+
+  textarea.selectionStart = cursorPosition + 1;
+  textarea.selectionEnd = cursorPosition + 1;
+};
+const removeSimbl = (e) => {
+  const cursorStart = textarea.selectionStart;
+  const cursorEnd = textarea.selectionEnd;
+
+  if (cursorStart === 0 && cursorEnd === 0) {
+    e.preventDefault();
+  } else if (cursorStart === cursorEnd) {
+    textarea.value = `${textarea.value.slice(0, cursorStart - 1)}${textarea.value.slice(cursorStart)}`;
+    textarea.selectionStart = cursorStart - 1;
+    textarea.selectionEnd = cursorStart - 1;
+  } else {
+    textarea.value = `${textarea.value.slice(0, cursorStart)}${textarea.value.slice(cursorEnd)}`;
+    textarea.selectionStart = cursorStart;
+    textarea.selectionEnd = cursorStart;
+  }
+};
+
 document.addEventListener('keydown', (e) => {
+  if (!e.code.toString().includes('Arrow')) {
+    e.preventDefault();
+  } else {
+    textarea.focus();
+  }
   const activeKey = document.getElementById(e.code);
+  const keyId = e.code;
+  const key = document.getElementById(keyId);
+
+  if (key && !optKeys.includes(keyId)) {
+    addSimbl(key.innerHTML);
+  }
+
+  if (e.code === 'Backspace') {
+    removeSimbl(e);
+  }
+
+  if (e.code === 'Space') {
+    addSimbl();
+  }
+
+  if (e.code === 'Enter') {
+    addSimbl('\n');
+  }
 
   if (e.code === 'Tab') {
-    e.preventDefault();
+    addSimbl('\t');
   }
+
   switchRegister(e);
   toggleCapsLock(e);
   switchLanguage(e);
