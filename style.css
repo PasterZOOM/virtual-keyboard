@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textarea {
+  width: 680px;
+  height: 150px;
+  resize: none;
+}
+
+.keyboard {
+  user-select: none;
+  border-radius: 6px;
+  padding: 6px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.keyboard__row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.key:hover {
+  background: dimgray;
+  color: white;
+}
+.key:active {
+  background: cadetblue;
+  color: white;
+  transform: translate(0, 1px);
+}
+
+#Backquote {
+  width: 30px;
+}
+
+#Backspace {
+  width: 45px;
+}
+
+#Delete {
+  width: 30px;
+}
+
+#Backslash,
+#Tab {
+  width: 55px;
+}
+
+#CapsLock {
+  width: 70px;
+}
+
+#Enter {
+  width: 85px;
+}
+
+#ShiftLeft {
+  width: 86px;
+}
+
+#ShiftRight {
+  width: 114px;
+}
+
+#Space {
+  width: 250px;
+}
+
+.up-down {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.up-down__key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 42px;
+  height: 19px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.up-down__key:hover {
+  background: dimgray;
+  color: white;
+}
+.up-down__key:active {
+  background: cadetblue;
+  color: white;
+  transform: translate(0, 1px);
+  transition: 0.3s;
+}
+.up-down #ArrowUp {
+  border-radius: 4px 4px 0 0;
+}
+.up-down #ArrowDown {
+  border-radius: 0 0 4px 4px;
+}
+
+.active {
+  background: cadetblue;
+  color: white;
+  transform: translate(0, 1px);
+  transition: 0.3s;
+}
+.active:hover {
+  background: #50787c;
+  transform: translate(0, 1px);
+  transition: 0.3s;
+}
+
+.description,
+.switch-language {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
