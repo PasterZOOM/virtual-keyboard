@@ -288,7 +288,7 @@ const keyboard = {
 const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
 const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'AltRight', 'ControlRight'];
 
-let language = 'ru';
+let language = localStorage.getItem('language') ?? 'en';
 let register = 'lower';
 let isCapsLock = false;
 
@@ -325,6 +325,7 @@ const switchLanguage = (e) => {
     || (e.code === 'ShiftRight' && e.altKey)) {
     language = language === 'ru' ? 'en' : 'ru';
   }
+  localStorage.setItem('language', language);
 };
 
 const toggleCapsLock = (keyId) => {
