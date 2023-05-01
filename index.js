@@ -552,10 +552,12 @@ document.addEventListener('keyup', (e) => {
 });
 
 document.addEventListener('mousedown', (e) => {
+  const keyId = e.target.id;
+
   const textarea = document.querySelector('.textarea');
+  const activeKey = e.target;
 
   textarea.focus();
-  const keyId = e.target.id;
 
   if (Object.keys(keyboardObj.en.lower).includes(keyId)
     || e.target.classList.contains('keyboard')
@@ -564,15 +566,36 @@ document.addEventListener('mousedown', (e) => {
   }
 
   toggleCapsLock(keyId);
-  switchRegister(keyId);
 
   onKeyClick(keyId, e);
+  if (keyId === 'ShiftLeft' || keyId === 'ShiftRight') {
+    if (!activeKey.classList.contains('active')) {
+      activeKey.classList.add('active');
+      if (isCapsLock) {
+        register = 'lower';
+      } else {
+        register = 'upper';
+      }
+      redraw();
+    }
+  }
 });
 
 document.addEventListener('mouseup', (e) => {
   const keyId = e.target.id;
+  const activeKey = e.target;
 
-  switchRegister(keyId);
+  if (keyId === 'ShiftLeft' || keyId === 'ShiftRight') {
+    if (activeKey.classList.contains('active')) {
+      activeKey.classList.remove('active');
+      if (!isCapsLock) {
+        register = 'lower';
+      } else {
+        register = 'upper';
+      }
+      redraw();
+    }
+  }
 });
 
 document.getElementById('Fn').addEventListener('click', switchLanguage);
