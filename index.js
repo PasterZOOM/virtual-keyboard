@@ -379,7 +379,7 @@ const init = () => {
 
   const switchLanguage = document.createElement('div');
   switchLanguage.className = 'switch-language';
-  switchLanguage.innerHTML = 'Для переключения языка комбинация: alt + shift';
+  switchLanguage.innerHTML = 'Для переключения языка комбинация: alt + shift или левый клик мыши по fn';
   main.appendChild(switchLanguage);
 };
 init();
@@ -410,13 +410,9 @@ const switchRegister = (keyId) => {
   }
 };
 
-const switchLanguage = (e) => {
-  if ((e.code === 'ShiftLeft' && e.altKey)
-    || (e.code === 'ShiftRight' && e.altKey)
-    || (e.code === 'AltRight' && e.shiftKey)
-    || (e.code === 'AltLeft' && e.shiftKey)) {
-    language = language === 'ru' ? 'en' : 'ru';
-  }
+const switchLanguage = () => {
+  language = language === 'ru' ? 'en' : 'ru';
+
   localStorage.setItem('language', language);
   redraw();
 };
@@ -525,11 +521,15 @@ document.addEventListener('keydown', (e) => {
   const activeKey = document.getElementById(keyId);
 
   onKeyClick(keyId, e);
-
-  switchLanguage(e);
   switchRegister(keyId);
   toggleCapsLock(keyId);
 
+  if ((e.code === 'ShiftLeft' && e.altKey)
+    || (e.code === 'ShiftRight' && e.altKey)
+    || (e.code === 'AltRight' && e.shiftKey)
+    || (e.code === 'AltLeft' && e.shiftKey)) {
+    switchLanguage();
+  }
   if (keyId === 'CapsLock') {
     return;
   }
@@ -574,3 +574,5 @@ document.addEventListener('mouseup', (e) => {
 
   switchRegister(keyId);
 });
+
+document.getElementById('Fn').addEventListener('click', switchLanguage);
