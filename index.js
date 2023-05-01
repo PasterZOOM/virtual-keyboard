@@ -62,13 +62,13 @@ const keyboard = {
       Fn: 'fn',
       Window: 'meta',
       AltLeft: 'alt',
-      Space: 'space',
+      Space: ' ',
       AltRight: 'alt',
       ControlRight: 'ctrl',
-      ArrowLeft: 'left',
-      ArrowUp: 'up',
-      ArrowDown: 'down',
-      ArrowRight: 'right',
+      ArrowLeft: '←',
+      ArrowUp: '↑',
+      ArrowDown: '↓',
+      ArrowRight: '→',
     },
     lower: {
       Backquote: '`',
@@ -132,13 +132,13 @@ const keyboard = {
       Fn: 'fn',
       Window: 'meta',
       AltLeft: 'alt',
-      Space: 'space',
+      Space: ' ',
       AltRight: 'alt',
       ControlRight: 'ctrl',
-      ArrowLeft: 'left',
-      ArrowUp: 'up',
-      ArrowDown: 'down',
-      ArrowRight: 'right',
+      ArrowLeft: '←',
+      ArrowUp: '↑',
+      ArrowDown: '↓',
+      ArrowRight: '→',
     },
   },
   ru: {
@@ -204,13 +204,13 @@ const keyboard = {
       Fn: 'fn',
       Window: 'meta',
       AltLeft: 'alt',
-      Space: 'space',
+      Space: ' ',
       AltRight: 'alt',
       ControlRight: 'ctrl',
-      ArrowLeft: 'left',
-      ArrowUp: 'up',
-      ArrowDown: 'down',
-      ArrowRight: 'right',
+      ArrowLeft: '←',
+      ArrowUp: '↑',
+      ArrowDown: '↓',
+      ArrowRight: '→',
     },
     lower: {
       Backquote: 'ё',
@@ -274,25 +274,25 @@ const keyboard = {
       Fn: 'fn',
       Window: 'meta',
       AltLeft: 'alt',
-      Space: 'space',
+      Space: ' ',
       AltRight: 'alt',
       ControlRight: 'ctrl',
-      ArrowLeft: 'left',
-      ArrowUp: 'up',
-      ArrowDown: 'down',
-      ArrowRight: 'right',
+      ArrowLeft: '←',
+      ArrowUp: '↑',
+      ArrowDown: '↓',
+      ArrowRight: '→',
     },
   },
 };
 
 const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
-const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
+const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'AltRight', 'ControlRight'];
 
 let language = 'ru';
 let register = 'lower';
 let isCapsLock = false;
 
-const keys = document.querySelectorAll('.key');
+const keys = document.querySelectorAll('.key, .up-down__key');
 const textarea = document.querySelector('.textarea');
 
 const redraw = () => {
@@ -313,8 +313,8 @@ const redraw = () => {
 };
 redraw();
 
-const switchRegister = (e) => {
-  if (e.code === 'ShiftRight' || e.code === 'ShiftLeft') {
+const switchRegister = (keyId) => {
+  if (keyId === 'ShiftRight' || keyId === 'ShiftLeft') {
     register = register === 'upper' ? 'lower' : 'upper';
     redraw();
   }
@@ -327,9 +327,9 @@ const switchLanguage = (e) => {
   }
 };
 
-const toggleCapsLock = (e) => {
-  if (e.code === 'CapsLock') {
-    const capsLockKey = document.getElementById(e.code);
+const toggleCapsLock = (keyId) => {
+  if (keyId === 'CapsLock') {
+    const capsLockKey = document.getElementById(keyId);
 
     register = isCapsLock ? 'lower' : 'upper';
 
@@ -346,12 +346,20 @@ const toggleCapsLock = (e) => {
 };
 
 const addSimbl = (simbl = ' ') => {
-  const cursorPosition = textarea.selectionStart;
-  textarea.value = `${textarea.value.slice(0, cursorPosition)}${simbl}${textarea.value.slice(cursorPosition)}`;
+  const cursorStart = textarea.selectionStart;
+  const cursorEnd = textarea.selectionEnd;
 
-  textarea.selectionStart = cursorPosition + 1;
-  textarea.selectionEnd = cursorPosition + 1;
+  if (cursorStart === cursorEnd) {
+    textarea.value = `${textarea.value.slice(0, cursorStart)}${simbl}${textarea.value.slice(cursorStart)}`;
+    textarea.selectionStart = cursorStart + 1;
+    textarea.selectionEnd = cursorEnd + 1;
+  } else {
+    textarea.value = `${textarea.value.slice(0, cursorStart)}${simbl}${textarea.value.slice(cursorEnd)}`;
+    textarea.selectionStart = cursorStart + 1;
+    textarea.selectionEnd = cursorStart + 1;
+  }
 };
+
 const removeSimbl = (e) => {
   const cursorStart = textarea.selectionStart;
   const cursorEnd = textarea.selectionEnd;
@@ -369,41 +377,40 @@ const removeSimbl = (e) => {
   }
 };
 
-document.addEventListener('keydown', (e) => {
-  if (!e.code.toString().includes('Arrow')) {
-    e.preventDefault();
-  } else {
-    textarea.focus();
-  }
-  const activeKey = document.getElementById(e.code);
-  const keyId = e.code;
+const onKeyClick = (keyId, e) => {
   const key = document.getElementById(keyId);
 
   if (key && !optKeys.includes(keyId)) {
     addSimbl(key.innerHTML);
   }
 
-  if (e.code === 'Backspace') {
+  if (keyId === 'Backspace') {
     removeSimbl(e);
   }
 
-  if (e.code === 'Space') {
-    addSimbl();
-  }
-
-  if (e.code === 'Enter') {
+  if (keyId === 'Enter') {
     addSimbl('\n');
   }
 
-  if (e.code === 'Tab') {
+  if (keyId === 'Tab') {
     addSimbl('\t');
   }
+};
 
-  switchRegister(e);
-  toggleCapsLock(e);
+document.addEventListener('keydown', (e) => {
+  textarea.focus();
+  e.preventDefault();
+
+  const keyId = e.code;
+  const activeKey = document.getElementById(keyId);
+
+  onKeyClick(keyId, e);
+
   switchLanguage(e);
+  switchRegister(keyId);
+  toggleCapsLock(keyId);
 
-  if (e.code === 'CapsLock') {
+  if (keyId === 'CapsLock') {
     return;
   }
   if (activeKey) {
@@ -412,13 +419,36 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
-  const activeKey = document.getElementById(e.code);
-  switchRegister(e);
+  const keyId = e.code;
+  const activeKey = document.getElementById(keyId);
+  switchRegister(keyId);
 
-  if (e.code === 'CapsLock') {
+  if (keyId === 'CapsLock') {
     return;
   }
   if (activeKey) {
     activeKey.classList.remove('active');
   }
+});
+
+document.addEventListener('mousedown', (e) => {
+  textarea.focus();
+  const keyId = e.target.id;
+
+  if (Object.keys(keyboard.en.lower).includes(keyId)
+    || e.target.classList.contains('keyboard')
+    || e.target.classList.contains('keyboard__row')) {
+    e.preventDefault();
+  }
+
+  toggleCapsLock(keyId);
+  switchRegister(keyId);
+
+  onKeyClick(keyId, e);
+});
+
+document.addEventListener('mouseup', (e) => {
+  const keyId = e.target.id;
+
+  switchRegister(keyId);
 });
