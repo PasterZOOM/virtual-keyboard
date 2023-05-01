@@ -14,7 +14,8 @@ const keyboardObj = {
       Digit0: ')',
       Minus: '_',
       Equal: '+',
-      Backspace: 'backspace',
+      Backspace: '← bs',
+      Delete: 'del',
 
       Tab: 'tab',
       KeyQ: 'Q',
@@ -84,7 +85,8 @@ const keyboardObj = {
       Digit0: '0',
       Minus: '-',
       Equal: '=',
-      Backspace: 'backspace',
+      Backspace: '← bs',
+      Delete: 'del',
 
       Tab: 'tab',
       KeyQ: 'q',
@@ -156,7 +158,8 @@ const keyboardObj = {
       Digit0: ')',
       Minus: '_',
       Equal: '+',
-      Backspace: 'backspace',
+      Backspace: '← bs',
+      Delete: 'del',
 
       Tab: 'tab',
       KeyQ: 'Й',
@@ -226,7 +229,8 @@ const keyboardObj = {
       Digit0: '0',
       Minus: '-',
       Equal: '=',
-      Backspace: 'backspace',
+      Backspace: '← bs',
+      Delete: 'del',
 
       Tab: 'tab',
       KeyQ: 'й',
@@ -285,13 +289,13 @@ const keyboardObj = {
   },
 };
 
-const row1 = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'];
+const row1 = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Delete'];
 const row2 = ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash'];
 const row3 = ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'];
 const row4 = ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight'];
 const row5 = ['ControlLeft', 'Fn', 'Window', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowUp', 'ArrowRight'];
 const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
-const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'AltRight', 'ControlRight'];
+const optKeys = ['Backspace', 'Delete', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'AltRight', 'ControlRight'];
 
 let language = localStorage.getItem('language') ?? 'en';
 let register = 'lower';
@@ -470,6 +474,23 @@ const removeSimbl = (e) => {
   }
 };
 
+const deleteSimbl = (e) => {
+  const textarea = document.querySelector('.textarea');
+
+  const cursorStart = textarea.selectionStart;
+  const cursorEnd = textarea.selectionEnd;
+
+  if (cursorStart === 0 && cursorEnd === 0) {
+    e.preventDefault();
+  } else if (cursorStart === cursorEnd) {
+    textarea.value = `${textarea.value.slice(0, cursorStart)}${textarea.value.slice(cursorStart + 1)}`;
+  } else {
+    textarea.value = `${textarea.value.slice(0, cursorStart)}${textarea.value.slice(cursorEnd)}`;
+  }
+  textarea.selectionStart = cursorStart;
+  textarea.selectionEnd = cursorStart;
+};
+
 const onKeyClick = (keyId, e) => {
   const key = document.getElementById(keyId);
 
@@ -479,6 +500,10 @@ const onKeyClick = (keyId, e) => {
 
   if (keyId === 'Backspace') {
     removeSimbl(e);
+  }
+
+  if (keyId === 'Delete') {
+    deleteSimbl(e);
   }
 
   if (keyId === 'Enter') {

@@ -55,7 +55,11 @@
 }
 
 #Backspace {
-  width: 80px;
+  width: 45px;
+}
+
+#Delete {
+  width: 30px;
 }
 
 #Backslash,
