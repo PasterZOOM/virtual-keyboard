@@ -408,10 +408,13 @@ const switchRegister = (keyId) => {
 
 const switchLanguage = (e) => {
   if ((e.code === 'ShiftLeft' && e.altKey)
-    || (e.code === 'ShiftRight' && e.altKey)) {
+    || (e.code === 'ShiftRight' && e.altKey)
+    || (e.code === 'AltRight' && e.shiftKey)
+    || (e.code === 'AltLeft' && e.shiftKey)) {
     language = language === 'ru' ? 'en' : 'ru';
   }
   localStorage.setItem('language', language);
+  redraw();
 };
 
 const toggleCapsLock = (keyId) => {
