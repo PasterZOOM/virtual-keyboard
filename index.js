@@ -367,6 +367,16 @@ const init = () => {
       rowInit(row5, language);
     }
   }
+
+  const description = document.createElement('div');
+  description.className = 'description';
+  description.innerHTML = 'Клавиатура создана в операционной системе Linux';
+  main.appendChild(description);
+
+  const switchLanguage = document.createElement('div');
+  switchLanguage.className = 'switch-language';
+  switchLanguage.innerHTML = 'Для переключения языка комбинация: alt + shift';
+  main.appendChild(switchLanguage);
 };
 init();
 

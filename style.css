@@ -127,4 +127,9 @@
   transition: 0.3s;
 }
 
+.description,
+.switch-language {
+  margin-top: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -8,11 +8,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .textarea {
   width: 680px;
   height: 150px;
   resize: none;
 }
+
 .keyboard {
   user-select: none;
   border-radius: 6px;
@@ -132,4 +134,9 @@
     transform: translate(0, 1px);
     transition: 0.3s;
   }
+}
+
+.description,
+.switch-language {
+  margin-top: 10px;
 }
