@@ -50,36 +50,36 @@
   transform: translate(0, 1px);
 }
 
-.grave {
+#Backquote {
   width: 30px;
 }
 
-.backspace {
+#Backspace {
   width: 80px;
 }
 
-.backslash,
-.tab {
+#Backslash,
+#Tab {
   width: 55px;
 }
 
-.caps-lock {
+#CapsLock {
   width: 70px;
 }
 
-.enter {
+#Enter {
   width: 85px;
 }
 
-.left-shift {
+#ShiftLeft {
   width: 86px;
 }
 
-.right-shift {
+#ShiftRight {
   width: 114px;
 }
 
-.spase {
+#Space {
   width: 250px;
 }
 
@@ -108,10 +108,10 @@
   transform: translate(0, 1px);
   transition: 0.3s;
 }
-.up-down .up {
+.up-down #ArrowUp {
   border-radius: 4px 4px 0 0;
 }
-.up-down .down {
+.up-down #ArrowDown {
   border-radius: 0 0 4px 4px;
 }
 

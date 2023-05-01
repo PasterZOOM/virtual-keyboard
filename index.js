@@ -1,4 +1,4 @@
-const keyboard = {
+const keyboardObj = {
   en: {
     upper: {
       Backquote: '~',
@@ -285,6 +285,11 @@ const keyboard = {
   },
 };
 
+const row1 = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'];
+const row2 = ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash'];
+const row3 = ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'];
+const row4 = ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight'];
+const row5 = ['ControlLeft', 'Fn', 'Window', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowUp', 'ArrowRight'];
 const ruKeys = ['Backquote', 'BracketLeft', 'BracketRight', 'Semicolon', 'Quote', 'Comma', 'Period'];
 const optKeys = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'Fn', 'Window', 'AltLeft', 'AltRight', 'ControlRight'];
 
@@ -292,10 +297,81 @@ let language = localStorage.getItem('language') ?? 'en';
 let register = 'lower';
 let isCapsLock = false;
 
-const keys = document.querySelectorAll('.key, .up-down__key');
-const textarea = document.querySelector('.textarea');
+const body = document.getElementById('body');
+
+const init = () => {
+  const main = document.createElement('main');
+  main.className = 'main';
+  body.appendChild(main);
+
+  const label = document.createElement('label');
+  main.appendChild(label);
+
+  const textarea = document.createElement('textarea');
+  textarea.className = 'textarea';
+  label.appendChild(textarea);
+
+  const keyboard = document.createElement('div');
+  keyboard.className = 'keyboard';
+  main.appendChild(keyboard);
+
+  for (let i = 0; i < 5; i += 1) {
+    const keyboardRow = document.createElement('div');
+    keyboardRow.className = 'keyboard__row';
+    keyboard.appendChild(keyboardRow);
+
+    const rowInit = (keysArray, currentLanguage) => {
+      for (let j = 0; j < keysArray.length; j += 1) {
+        const keyId = keysArray[j];
+        if (keyId !== 'ArrowUp' && keyId !== 'ArrowDown') {
+          const key = document.createElement('div');
+          key.className = 'key';
+          key.id = keyId;
+          keyboardRow.appendChild(key);
+
+          key.innerHTML = keyboardObj[currentLanguage].lower[keyId];
+        } else {
+          const upDown = document.createElement('div');
+          upDown.className = 'up-down';
+          keyboardRow.appendChild(upDown);
+
+          const keyUp = document.createElement('div');
+          keyUp.className = 'up-down__key';
+          keyUp.id = 'ArrowUp';
+
+          keyUp.innerHTML = keyboardObj[currentLanguage].lower.ArrowUp;
+          upDown.appendChild(keyUp);
+
+          const keyDown = document.createElement('div');
+          keyDown.className = 'up-down__key';
+          keyDown.id = 'ArrowDown';
+
+          keyDown.innerHTML = keyboardObj[currentLanguage].lower.ArrowDown;
+          upDown.appendChild(keyDown);
+        }
+      }
+    };
+    if (i === 0) {
+      rowInit(row1, language);
+    }
+    if (i === 1) {
+      rowInit(row2, language);
+    }
+    if (i === 2) {
+      rowInit(row3, language);
+    }
+    if (i === 3) {
+      rowInit(row4, language);
+    }
+    if (i === 4) {
+      rowInit(row5, language);
+    }
+  }
+};
+init();
 
 const redraw = () => {
+  const keys = document.querySelectorAll('.key, .up-down__key');
   for (let i = 0; i < keys.length; i += 1) {
     const key = keys[i];
 
@@ -308,7 +384,7 @@ const redraw = () => {
       keyRegister = register === 'upper' ? 'lower' : 'upper';
     }
 
-    key.innerHTML = keyboard[language][keyRegister][key.id];
+    key.innerHTML = keyboardObj[language][keyRegister][key.id];
   }
 };
 redraw();
@@ -347,6 +423,7 @@ const toggleCapsLock = (keyId) => {
 };
 
 const addSimbl = (simbl = ' ') => {
+  const textarea = document.querySelector('.textarea');
   const cursorStart = textarea.selectionStart;
   const cursorEnd = textarea.selectionEnd;
 
@@ -362,6 +439,8 @@ const addSimbl = (simbl = ' ') => {
 };
 
 const removeSimbl = (e) => {
+  const textarea = document.querySelector('.textarea');
+
   const cursorStart = textarea.selectionStart;
   const cursorEnd = textarea.selectionEnd;
 
@@ -399,6 +478,8 @@ const onKeyClick = (keyId, e) => {
 };
 
 document.addEventListener('keydown', (e) => {
+  const textarea = document.querySelector('.textarea');
+
   textarea.focus();
   e.preventDefault();
 
@@ -433,10 +514,12 @@ document.addEventListener('keyup', (e) => {
 });
 
 document.addEventListener('mousedown', (e) => {
+  const textarea = document.querySelector('.textarea');
+
   textarea.focus();
   const keyId = e.target.id;
 
-  if (Object.keys(keyboard.en.lower).includes(keyId)
+  if (Object.keys(keyboardObj.en.lower).includes(keyId)
     || e.target.classList.contains('keyboard')
     || e.target.classList.contains('keyboard__row')) {
     e.preventDefault();

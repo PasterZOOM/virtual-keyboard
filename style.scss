@@ -51,36 +51,36 @@
   }
 }
 
-.grave {
+#Backquote {
   width: 30px;
 }
 
-.backspace {
+#Backspace {
   width: 80px;
 }
 
-.backslash,
-.tab {
+#Backslash,
+#Tab {
   width: 55px;
 }
 
-.caps-lock {
+#CapsLock {
   width: 70px;
 }
 
-.enter {
+#Enter {
   width: 85px;
 }
 
-.left-shift {
+#ShiftLeft {
   width: 86px;
 }
 
-.right-shift {
+#ShiftRight {
   width: 114px;
 }
 
-.spase {
+#Space {
   width: 250px;
 }
 
@@ -112,11 +112,11 @@
     }
   }
 
-  .up {
+  #ArrowUp {
     border-radius: 4px 4px 0 0;
   }
 
-  .down {
+  #ArrowDown {
     border-radius: 0 0 4px 4px;
   }
 }
